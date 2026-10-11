@@ -1,32 +1,343 @@
-# ผลรันจริง 4 ต.ค. 2569 (รอบที่ 2) | หลังบ้าน: cd backend && pytest -v -k "AC_" | หน้าจอ: cd frontend && npm test
-
 ============================= test session starts ==============================
-platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+platform linux -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0 -- /home/codespace/.python/current/bin/python
 cachedir: .pytest_cache
-rootdir: /workspaces/baanprom-swreqspec/backend
+rootdir: /workspaces/baanprom-bantita/backend
 configfile: pytest.ini
 testpaths: tests
-plugins: anyio-4.13.0
+plugins: anyio-4.9.0
 collecting ... collected 16 items
 
 tests/test_booking.py::test_AC_07_01_booking_success PASSED              [  6%]
 tests/test_booking.py::test_AC_07_02_slot_not_rebookable PASSED          [ 12%]
 tests/test_booking.py::test_AC_07_03_notify_both_within_60s PASSED       [ 18%]
 tests/test_booking.py::test_AC_07_04_no_charge_when_slot_taken PASSED    [ 25%]
-tests/test_load_scaled.py::test_AC_07_08_search_under_load_scaled PASSED [ 31%]
-tests/test_payment.py::test_AC_07_05_payment_timeout PASSED              [ 37%]
-tests/test_payment.py::test_AC_07_06_payment_declined PASSED             [ 43%]
-tests/test_payment.py::test_AC_07_07_inquiry_approved_no_double_charge PASSED [ 50%]
-tests/test_privacy.py::test_AC_07_09_phone_hidden_until_2h PASSED        [ 56%]
-tests/test_refund.py::test_AC_07_10_refund[R1-confirmed-48-customer-cancelled-350] PASSED [ 62%]
-tests/test_refund.py::test_AC_07_10_refund[R2-confirmed-5-customer-cancelled-180] PASSED [ 68%]
-tests/test_refund.py::test_AC_07_10_refund[R4-rematching-20-system-cancelled-350] PASSED [ 75%]
-tests/test_refund.py::test_AC_07_10_refund[R5-pending_payment-30-system-auto_cancelled-0] PASSED [ 81%]
-tests/test_refund.py::test_AC_07_10_refund_R6_not_allowed PASSED         [ 87%]
-tests/test_refund.py::test_AC_07_10_refund_R3 SKIPPED (รอ Q-14 (BR-0...) [ 93%]
-tests/test_refund.py::test_AC_07_10_refund_R3_temporary_behaviour PASSED [100%]
+tests/test_load_scaled.py::test_AC_07_08_search_under_load_scaled Fatal Python error: Segmentation fault
 
-======================== 15 passed, 1 skipped in 0.58s =========================
- PASS src/__tests__/AC-07-04.test.jsx (1 test) 148ms
- Test Files  1 passed (1)
-      Tests  1 passed (1)
+Thread 0x00007cf294ff9700 (most recent call first):
+  <no Python frame>
+
+Thread 0x00007cf2957fa700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2532 in run_sync_from_thread
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1015 in _spawn_task_from_thread
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 334 in start_task_soon
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 356 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf295ffb700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2532 in run_sync_from_thread
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1015 in _spawn_task_from_thread
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 334 in start_task_soon
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 356 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007cf2967fc700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 231 in chunks
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1896 in _fetchall_impl
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1285 in _fetchall_impl
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1380 in all
+  File "/workspaces/baanprom-bantita/backend/app/technicians/service.py", line 53 in search_available
+  File "/workspaces/baanprom-bantita/backend/app/technicians/router.py", line 21 in list_available
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/fastapi/telemetry/_api.py", line 240 in _run_sync_endpoint
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 967 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf296ffd700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2977fe700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf297fff700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 356 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2b8ff9700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2b97fa700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2b9ffb700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2ba7fc700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2baffd700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2bb7fe700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2bbfff700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d0c68700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d1469700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d1c72700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/queue.py", line 171 in get
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 956 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d2473700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d3579700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 290 in call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 357 in handle_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1014 in _send_single_request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 979 in _send_handling_redirects
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 942 in _send_handling_auth
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 914 in send
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 825 in request
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/starlette/testclient.py", line 463 in request
+  File "/home/codespace/.local/lib/python3.12/site-packages/httpx/_client.py", line 1053 in get
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 15 in timed_get
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d2d78700 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/selector_events.py", line 132 in _read_from_self
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/events.py", line 84 in _run
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 1971 in _run_once
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 638 in run_forever
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 671 in run_until_complete
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/runners.py", line 118 in run
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2310 in run
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/_core/_eventloop.py", line 74 in run
+  File "/home/codespace/.local/lib/python3.12/site-packages/anyio/from_thread.py", line 481 in run_blocking_portal
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007cf2d6dbb280 (most recent call first):
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/local/python/3.12.1/lib/python3.12/threading.py", line 997 in start
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 202 in _adjust_thread_count
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/thread.py", line 179 in submit
+  File "/usr/local/python/3.12.1/lib/python3.12/concurrent/futures/_base.py", line 608 in map
+  File "/workspaces/baanprom-bantita/backend/tests/test_load_scaled.py", line 20 in test_AC_07_08_search_under_load_scaled
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/python.py", line 167 in pytest_pyfunc_call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/python.py", line 1707 in runtest
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 184 in pytest_runtest_call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 250 in <lambda>
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 361 in from_call
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 249 in call_and_report
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 139 in runtestprotocol
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/runner.py", line 118 in pytest_runtest_protocol
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/main.py", line 408 in pytest_runtestloop
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/main.py", line 384 in _main
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/main.py", line 330 in wrap_session
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/main.py", line 377 in pytest_cmdline_main
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/config/__init__.py", line 229 in _main
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/_pytest/config/__init__.py", line 253 in _console_main
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pytest/__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+
+Extension modules: sqlalchemy.util._collections_cy, sqlalchemy.util._immutabledict_cy, sqlalchemy.sql._util_cy, sqlalchemy.sql._cache_key_cy, sqlalchemy.engine._processors_cy, sqlalchemy.engine._util_cy, sqlalchemy.engine._row_cy, sqlalchemy.engine._result_cy (total: 8)

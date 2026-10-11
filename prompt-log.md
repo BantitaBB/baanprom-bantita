@@ -111,3 +111,21 @@ AI ถาม: ยอดมัดจำบนหน้าจอเอาจาก
 cd backend && pytest -v -k "AC_" 2>&1 | tee ../specs/002-booking/test-run.txt  ผล 15 passed, 1 skipped
 cd frontend && npm test  ผล 1 passed
 กรอก ac-results.md รอบที่ 2 และสรุป gaps.md 10 แถว
+
+## #35 | 11 ต.ค. 2569 | อัปเดตสรุปผล AC
+
+คำสั่ง: ช่วยสรุป AC ลงใน ac-results.md ใหม่ให้หน่อย
+อัปเดต specs/002-booking/ac-results.md จากผล `python -m pytest -v` และ traceback ของ AC-07-08 ที่ทีมส่งมา: 14 passed, 1 failed, 1 skipped
+ระบุ AC-07-08 ว่ายังวัดเกณฑ์เวลาไม่ได้เพราะ test ล้มระหว่างคำขอพร้อมกัน และระบุ AC-07-10 R3 ว่ารอ Q-14; ไม่ได้รัน test ซ้ำ
+
+## #36 | 11 ต.ค. 2569 | แก้ test AC-07-08 concurrent database
+
+คำสั่ง: ช่วยแก้โค้ดให้หน่อย
+แก้ `backend/tests/test_load_scaled.py` ให้ใช้ฐานข้อมูล SQLite แบบไฟล์พร้อม connection pool แทน in-memory `StaticPool` ที่ใช้ connection เดียวร่วมกันเมื่อยิงคำขอพร้อมกัน และเพิ่ม assertion ตรวจว่าทุก response มีช่าง/ช่วงเวลาตามข้อมูลทดสอบ
+อัปเดต `specs/002-booking/ac-results.md` ตามผลล่าสุด และคงข้อจำกัดว่าเป็น test ย่อส่วน 20 คำขอ ไม่ใช่ผลตรวจรับ 500 ผู้ใช้
+ตรวจ: AC-07-08 ผ่าน 4 รอบ (รอบแยกหนึ่งครั้งและรอบทำซ้ำสามครั้ง); backend ทั้งชุด 15 passed, 1 skipped
+
+## #37 | 11 ต.ค. 2569 | จัดตาราง gaps.md ให้อ่านง่าย
+
+คำสั่ง: ช่วยจัดตารางให้อ่านง่ายหน่อย
+จัดตาราง GAP-01 ถึง GAP-10 ใน `specs/002-booking/gaps.md` จาก 7 คอลัมน์เป็น 3 คอลัมน์ โดยจัดกลุ่มรายละเอียดกับผลแก้ไขในแต่ละแถว และแปลงสรุปจำนวนสาเหตุเป็นตาราง โดยคงข้อมูลและรหัส REQ/AC เดิม
